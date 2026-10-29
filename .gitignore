@@ -1,0 +1,10 @@
+__pycache__/
+*.py[oc]
+*.egg-info/
+.venv/
+/data/
+/outputs/
+/multirun/
+/runs/
+wandb/
+.DS_Store

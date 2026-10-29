@@ -1,0 +1,13 @@
+# Sudoku: the solution grid diffuses, and the puzzle's given cells are anchors.
+defaults:
+  - logic
+  - _self_
+data:
+  source: sudoku
+  dataset_path: data/sudoku-extreme
+  max_seq_len: 81
+model:
+  clue_embedding: true     # under uniform noise a corrupted cell otherwise looks like a given
+training:
+  learning_rate: 1e-4
+  num_steps: 1000000

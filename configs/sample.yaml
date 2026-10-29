@@ -1,0 +1,11 @@
+# Text sampling: python -m discrete_diffusion.sample checkpoint_dir=<run>/checkpoints/<step>
+checkpoint_dir: ???        # <run>/checkpoints/<step>
+read_as: null              # read the head in another coordinate without converting it
+compute_dtype: null        # e.g. float32 on GPUs without bfloat16
+sampler: ancestral         # ancestral | re_corrupt
+nfe: 256                   # model evaluations, one per survival level
+spacing: cosine            # uniform | cosine spacing of the levels
+temperature: 1.0           # applied to the denoiser logits
+num_samples: 2048
+batch_size: 128            # every sample has its own key, but bfloat16 logits vary slightly with the batch
+seed: 0

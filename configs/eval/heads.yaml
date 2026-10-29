@@ -1,0 +1,9 @@
+# Head agreement and own-token sensitivity: python -m discrete_diffusion.eval.heads "views=[A,A:denoiser,B]"
+views: ???                 # checkpoints of one kernel, each optionally suffixed :denoiser, :cavity or :score to misread it
+stat: agreement            # agreement | sensitivity
+t: null                    # null draws t per sequence from the training proposal; a list evaluates fixed times
+compute_dtype: null        # e.g. float32 on GPUs without bfloat16
+split: test
+n: 51200                   # first n text records; a seeded subset of a logic split, cycled past its size
+batch_size: 128
+seed: 0                    # subset and noise draws

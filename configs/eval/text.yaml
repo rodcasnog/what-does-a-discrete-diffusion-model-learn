@@ -1,0 +1,9 @@
+# Text quality: python -m discrete_diffusion.eval.text samples=<sample output dir>/samples.json
+samples: ???               # samples.json of discrete_diffusion.sample
+reference: false           # score the matching test records instead (GenPPL, word entropy)
+split: test                # the references are its first records
+judge: gpt2-large
+judge_revision: 32b71b12589c2f8d625668d2335a01cac3249519
+max_length: 1024           # judge tokens per text
+batch_size: 32
+mauve_seeds: [25, 26, 27, 28, 29]   # MAUVE quantization seeds, averaged

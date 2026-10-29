@@ -1,0 +1,8 @@
+# Held-out NELBO: python -m discrete_diffusion.eval.elbo checkpoint_dir=<run>/checkpoints/<step>
+checkpoint_dir: ???        # <run>/checkpoints/<step>
+read_as: null              # read the head in another coordinate without converting it
+compute_dtype: null        # e.g. float32 on GPUs without bfloat16
+split: test
+n: 51200                   # first n text records; a seeded subset of a logic split, cycled past its size
+batch_size: 512
+seed: 0                    # subset and noise draws

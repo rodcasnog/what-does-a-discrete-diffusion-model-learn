@@ -1,0 +1,12 @@
+# Logic-task solve rate: python -m discrete_diffusion.eval.solve checkpoint_dir=<run>/checkpoints/<step> nfe=64
+checkpoint_dir: ???        # <run>/checkpoints/<step>
+read_as: null              # read the head in another coordinate without converting it
+compute_dtype: null        # e.g. float32 on GPUs without bfloat16
+sampler: ancestral         # ancestral | re_corrupt
+nfe: ???                   # model evaluations, one per survival level
+spacing: uniform           # uniform | cosine spacing of the levels
+temperature: 1.0           # applied to the denoiser logits
+split: test
+n: 4096                    # a seeded subset of the split, cycled past its size
+batch_size: 256
+seed: 0                    # subset and sampling draws

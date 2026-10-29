@@ -1,0 +1,11 @@
+# Boxoban: the move plan diffuses, and the board is an anchor.
+defaults:
+  - logic
+  - _self_
+data:
+  source: boxoban
+  dataset_path: data/boxoban
+  max_seq_len: 228         # 100 board cells + 128 move slots
+training:
+  learning_rate: 3e-4
+  num_steps: 2500000

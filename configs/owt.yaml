@@ -1,0 +1,22 @@
+# OpenWebText as 256-token GPT-2 records, and the training recipe the text models share.
+defaults:
+  - train
+  - _self_
+data:
+  source: text
+  dataset_path: data/openwebtext-gpt2-len256
+  max_seq_len: 256
+  tokenizer_name: gpt2
+diffusion:
+  t_min: 0.001
+model:
+  hidden_dim: 768
+  num_layers: 12
+  num_heads: 12
+  mlp_dim: 3072
+training:
+  num_steps: 500000
+  optimizer: muon
+  learning_rate: 1e-3
+  weight_decay: 0.01
+  max_grad_norm: 8.0

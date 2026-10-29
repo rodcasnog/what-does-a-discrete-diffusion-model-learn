@@ -1,0 +1,8 @@
+# @package _global_
+defaults:
+  - /owt
+  - _self_
+diffusion:
+  noise_type: gidd
+  gidd_lambda: 0.2
+  parametrization: denoiser

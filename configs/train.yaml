@@ -1,0 +1,40 @@
+# Defaults shared by every model; owt.yaml, logic.yaml and the task configs fill each ???.
+diffusion:
+  noise_type: ???          # masked | gidd | uniform
+  parametrization: ???     # coordinate the head is trained in: denoiser | cavity | score
+  gidd_lambda: ???         # gidd only: noise law (1 - lambda) mask + lambda uniform, lambda in (0, 1]
+  t_min: ???               # training window [t_min, t_max]
+  t_max: 0.9999
+model:
+  architecture: dit        # dit | graph_dit | maze_dit
+  hidden_dim: ???
+  num_layers: ???
+  num_heads: ???
+  mlp_dim: ???
+  cond_dim: 128            # adaLN time-conditioning width
+  dtype: bfloat16          # matmul dtype; parameters, norms and logits stay float32
+  flash_attention: true    # cuDNN attention on a GPU when no mask is given and the length is even
+  clue_embedding: false    # learned vector added to the embeddings of anchor positions
+training:
+  seed: 0
+  num_steps: ???
+  global_batch_size: 512   # split over the visible GPUs, one optimizer step per batch
+  optimizer: ???           # adamw | muon (hidden matrices; embeddings, output layer and vectors stay on AdamW)
+  learning_rate: ???       # constant after a linear warmup from 0
+  warmup_steps: 1000
+  adam_b1: 0.9
+  adam_b2: 0.999
+  muon_momentum: 0.95      # Nesterov
+  weight_decay: ???        # decoupled; embeddings and vectors are not decayed
+  max_grad_norm: ???
+  ema_decay: 0.9999
+  log_steps: 100
+  val_steps: 1000
+  val_batches: 32
+checkpoint:
+  save_every: 2500
+  max_to_keep: 1
+wandb:
+  project: what-does-a-discrete-diffusion-model-learn
+  run_name: null
+  mode: disabled           # online | offline | disabled; metrics.jsonl in the run directory is always written

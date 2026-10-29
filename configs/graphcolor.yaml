@@ -1,0 +1,17 @@
+# Graph coloring of planted instances: the vertex colors diffuse, and the graph is the attention mask.
+defaults:
+  - logic
+  - _self_
+data:
+  source: graphcolor
+  max_seq_len: ${data.graphcolor.n}   # one color token per vertex
+  graphcolor:
+    n: 64                  # vertices
+    k: 4                   # colors, each planted on n/k vertices
+    p: 0.2                 # probability of each edge between differently colored vertices
+model:
+  architecture: graph_dit  # the adjacency masks the attention of half the heads
+  flash_attention: false   # dense masks run on XLA attention
+training:
+  learning_rate: 1e-4
+  num_steps: 300000

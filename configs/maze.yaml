@@ -1,0 +1,19 @@
+# Maze shortest paths on a 40x40 board: the move plan diffuses, and the board is an anchor.
+defaults:
+  - logic
+  - _self_
+data:
+  source: maze
+  dataset_path: data/maze-40x40
+  max_seq_len: 1792        # 1600 board cells + 192 move slots
+  maze:
+    grid_height: 40
+    grid_width: 40
+model:
+  architecture: maze_dit   # convolutional board encoder, read by the moves through cross-attention
+  grid_encoder_dim: 128
+  grid_encoder_dilations: [[1, 2], [2, 4], [1, 2], [1, 2]]
+  grid_pool: [1, 2, 1, 2]  # 40x40 -> 20x20 -> 10x10
+training:
+  learning_rate: 1e-4
+  num_steps: 400000

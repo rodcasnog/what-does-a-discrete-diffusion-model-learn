@@ -1,0 +1,17 @@
+# The logic tasks: the problem is a clean anchor (never corrupted, not scored), and only the solution diffuses.
+defaults:
+  - train
+  - _self_
+diffusion:
+  noise_type: uniform      # the paper's recipe for every logic task: uniform diffusion, cavity head
+  parametrization: cavity
+  t_min: 0.01              # the final decode removes the residual corruption at t_min
+model:
+  hidden_dim: 512
+  num_layers: 12
+  num_heads: 8
+  mlp_dim: 2048
+training:
+  optimizer: adamw
+  weight_decay: 0.05
+  max_grad_norm: 1.0
